@@ -1,1 +1,64 @@
-<p>register works!</p>
+<div class="container">
+    <div class="row">
+        <form class="mt-5 col-xl-9 col-xxl-7 m-auto" [formGroup]="reg_form" (submit)="submit(reg_form.value)">
+            <div class="mb-3">
+                <label for="name">Name</label>
+                <input formControlName="name" class="form-control mt-1" type="text" name="name" placeholder="Enter Your Full Name">
+                <div class="alert alert-danger mt-2" *ngIf="reg_form.get('name')?.hasError('required') && reg_form.get('name')?.touched">
+                    The Name Is Required
+                </div>
+                <div class="alert alert-danger mt-2" *ngIf="reg_form.get('name')?.hasError('minlength') && reg_form.get('name')?.touched">
+                    The Name Characters Must Be More Than 5
+                </div>
+                <div class="alert alert-danger mt-2" *ngIf="reg_form.get('name')?.hasError('maxlength') && reg_form.get('name')?.touched">
+                    The Name Characters Must Be Less Than 40
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="email">Email</label>
+                <input formControlName="email" class="form-control mt-1" type="text" name="email" placeholder="Enter Your Email">
+                <div class="alert alert-danger mt-2" *ngIf="reg_form.get('email')?.hasError('required') && reg_form.get('email')?.touched">
+                    The Email Is Required
+                </div>
+                <div class="alert alert-danger mt-2" *ngIf="reg_form.get('email')?.hasError('email') && reg_form.get('email')?.touched">
+                    The Email Is Invalid
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="password">Password</label>
+                <input formControlName="password" class="form-control mt-1" type="password" name="password" placeholder="Enter A Secure Password">
+                <div class="alert alert-danger mt-2" *ngIf="reg_form.get('password')?.hasError('required') && reg_form.get('password')?.touched">
+                    The Password Is Required
+                </div>
+                <div class="alert alert-danger mt-2" *ngIf="reg_form.get('password')?.hasError('minlength') && reg_form.get('password')?.touched">
+                    The Password Characters Must Be More Than 8
+                </div>
+                <div class="alert alert-danger mt-2" *ngIf="reg_form.get('password')?.hasError('maxlength') && reg_form.get('password')?.touched">
+                    The Password Characters Must Be Less Than 50
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="company">Company</label>
+                <input formControlName="company" class="form-control mt-1" type="text" name="company" placeholder="Enter The Name Of Your Company">
+                <div class="alert alert-danger mt-2" *ngIf="reg_form.get('company')?.hasError('required') && reg_form.get('company')?.touched">
+                    The Company Is Required
+                </div>
+            </div>
+            <div class="mb-3">
+                <input formControlName="remember_me" class="form-check-input m-1" type="checkbox" name="remember_me">
+                <label class="form-check-label" for="remember_me">
+                    Remember Me
+                </label>
+            </div>
+            <button type="submit" class="btn btn-outline-primary" [disabled]="reg_form.invalid">
+                Register
+            </button>
+            <div class="alert alert-danger mt-2" *ngIf="error">
+                Error At Creating The User
+            </div>
+            <a routerLink="../login" class="w-full d-block mt-2">
+                Or You Have An Account ?
+            </a>
+        </form>
+    </div>
+</div>

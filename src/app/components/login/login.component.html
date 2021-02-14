@@ -1,1 +1,44 @@
-<p>login works!</p>
+<div class="container">
+    <div class="row">
+        <form class="mt-5 col-xl-9 col-xxl-7 m-auto" [formGroup]="log_form" (submit)="submit(log_form.value)">
+            <div class="mb-3">
+                <label for="email">Email</label>
+                <input formControlName="email" class="form-control mt-1" type="text" name="email" placeholder="Enter Your Email">
+                <div class="alert alert-danger mt-2" *ngIf="log_form.get('email')?.hasError('required') && log_form.get('email')?.touched">
+                    The Email Is Required
+                </div>
+                <div class="alert alert-danger mt-2" *ngIf="log_form.get('email')?.hasError('email') && log_form.get('email')?.touched">
+                    The Email Is Invalid
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="password">Password</label>
+                <input formControlName="password" class="form-control mt-1" type="password" name="password" placeholder="Enter Your Password">
+                <div class="alert alert-danger mt-2" *ngIf="log_form.get('password')?.hasError('required') && log_form.get('password')?.touched">
+                    The Password Is Required
+                </div>
+                <div class="alert alert-danger mt-2" *ngIf="log_form.get('password')?.hasError('minlength') && log_form.get('password')?.touched">
+                    The Password Characters Must Be More Than 8
+                </div>
+                <div class="alert alert-danger mt-2" *ngIf="log_form.get('password')?.hasError('maxlength') && log_form.get('password')?.touched">
+                    The Password Characters Must Be Less Than 50
+                </div>
+            </div>
+            <div class="mb-3">
+                <input formControlName="remember_me" class="form-check-input m-1" type="checkbox" name="remember_me">
+                <label class="form-check-label" for="remember_me">
+                    Remember Me
+                </label>
+            </div>
+            <button type="submit" class="btn btn-outline-primary" [disabled]="log_form.invalid">
+                Login
+            </button>
+            <div class="alert alert-danger mt-2" *ngIf="error">
+                The Credentials Used Are Invalid
+            </div>
+            <a routerLink="../register" class="w-full d-block mt-2">
+                Or You Not Have An Account ?
+            </a>
+        </form>
+    </div>
+</div>
