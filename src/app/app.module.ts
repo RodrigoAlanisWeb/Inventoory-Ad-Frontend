@@ -10,13 +10,17 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './services/auth.service';
+import { InventoriesComponent } from './components/inventories/inventories.component';
+import { CreateInventoryComponent } from './components/create-inventory/create-inventory.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    InventoriesComponent,
+    CreateInventoryComponent
   ],
   imports: [
     BrowserModule,

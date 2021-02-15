@@ -18,7 +18,6 @@ export class AppComponent {
 
   verify_user() {
     this._auth.verify_token().subscribe(res => {
-      console.log(res);
       if (res.res) {
         this.user = res.user;
         return;

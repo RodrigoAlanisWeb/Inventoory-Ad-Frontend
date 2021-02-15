@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <form class="mt-5 col-xl-9 col-xxl-7 m-auto" [formGroup]="c_form" (submit)="submit(c_form.value)">
+            <div class="mb-3">
+                <label for="email">Name</label>
+                <input formControlName="name" class="form-control mt-1" type="text" name="email" placeholder="Enter The Name Of Your Inventory">
+                <div class="alert alert-danger mt-2" *ngIf="c_form.get('name')?.hasError('required') && c_form.get('name')?.touched">
+                    The Name Is Required
+                </div>
+                <div class="alert alert-danger mt-2" *ngIf="c_form.get('name')?.hasError('minlength') && c_form.get('name')?.touched">
+                    The Password Characters Must Be More Than 5
+                </div>
+                <div class="alert alert-danger mt-2" *ngIf="c_form.get('name')?.hasError('maxlength') && c_form.get('name')?.touched">
+                    The Password Characters Must Be Less Than 20
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="password">Description</label>
+                <textarea class="form-control" formControlName="description" rows="3" placeholder="Enter The Description Of Your Inventory"></textarea>
+                <div class="alert alert-danger mt-2" *ngIf="c_form.get('description')?.hasError('required') && c_form.get('description')?.touched">
+                    The Description Is Required
+                </div>
+                <div class="alert alert-danger mt-2" *ngIf="c_form.get('description')?.hasError('minlength') && c_form.get('description')?.touched">
+                    The Description Characters Must Be More Than 10
+                </div>
+            </div>
+            <button type="submit" class="btn btn-outline-primary" [disabled]="c_form.invalid">
+                Create
+            </button>
+
+            <div *ngIf="error" class="alert alert-danger mt-2" role="alert">
+                Error At Creating The Inventory
+            </div>
+        </form>
+    </div>
+</div>

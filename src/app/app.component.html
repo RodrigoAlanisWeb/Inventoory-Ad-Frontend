@@ -24,6 +24,16 @@
             <li class="dropdown-item">{{ user.name }}</li>
           </ul>
         </li>
+        <li class="nav-item dropdown" *ngIf="user">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Inventories
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark bg-dark" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" routerLink="../inventories">Your Inventories</a></li>
+            <li><a class="dropdown-item" style="cursor: pointer;" routerLink="../inventories/create">Create</a></li>
+          </ul>
+        </li>
       </ul>
       <div class="d-flex" *ngIf="!user">
         <a class="btn btn-primary" routerLink="login">Login</a>
