@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { from } from 'rxjs';
 import { AppComponent } from 'src/app/app.component';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,9 +11,10 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   log_form: FormGroup;
   error: boolean;
+  gapiSetup: boolean;
+  authInstance: any;
 
   constructor(
     private _fb: FormBuilder,
@@ -25,6 +27,7 @@ export class LoginComponent implements OnInit {
       'remember_me': [''],
     });
     this.error = false;
+    this.gapiSetup = false;
   }
 
   ngOnInit(): void {

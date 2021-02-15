@@ -36,4 +36,8 @@ export class AuthService {
       }
     });
   }
+
+  g_login(email: string,token: string): Observable<any> {
+    return this._http.post("http://127.0.0.1:8000/api/auth/Glogin", {"email":email,"token": token});
+  }
 }

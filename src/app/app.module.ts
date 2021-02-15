@@ -22,7 +22,7 @@ import { AuthService } from './services/auth.service';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     AuthService

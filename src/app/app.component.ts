@@ -10,7 +10,7 @@ export class AppComponent {
   user: any;
 
   constructor(
-    private _auth: AuthService
+    private _auth: AuthService,
   ) {
     this.user = false;
     this.verify_user();
@@ -18,13 +18,18 @@ export class AppComponent {
 
   verify_user() {
     this._auth.verify_token().subscribe(res => {
-      this.user = res.user;
-      console.log(this.user);
-    })
+      console.log(res);
+      if (res.res) {
+        this.user = res.user;
+        return;
+      }
+    });
+
+    this.user = false;
   }
 
   logout() {
     this._auth.logout().subscribe(res => console.log(res));
-    this.user = false;
+    this.verify_user();
   }
 }
