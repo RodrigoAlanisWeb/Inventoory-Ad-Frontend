@@ -34,4 +34,20 @@ export class InventoryService {
       }
     });
   }
+
+  save(data: JSON,id: string): Observable<any> {
+    return this._http.post(`http://127.0.0.1:8000/api/inventory/update/${id}`,data,{
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+  }
+
+  get(id: string): Observable<any> {
+    return this._http.get(`http://127.0.0.1:8000/api/inventory/get/${id}`,{
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+  }
 }

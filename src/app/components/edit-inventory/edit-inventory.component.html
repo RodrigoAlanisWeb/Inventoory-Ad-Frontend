@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <form *ngIf="inventory" class="mt-5 col-xl-9 col-xxl-7 m-auto" [formGroup]="d_form" (submit)="submit(d_form.value)">
+            <div class="mb-3">
+                <label for="email">Name</label>
+                <input formControlName="name" class="form-control mt-1" type="text" name="email" [value]="inventory.name">
+                <div class="alert alert-danger mt-2" *ngIf="d_form.get('name')?.hasError('required') && d_form.get('name')?.touched">
+                    The Name Is Required
+                </div>
+                <div class="alert alert-danger mt-2" *ngIf="d_form.get('name')?.hasError('minlength') && d_form.get('name')?.touched">
+                    The Name Characters Must Be More Than 5
+                </div>
+                <div class="alert alert-danger mt-2" *ngIf="d_form.get('name')?.hasError('maxlength') && d_form.get('name')?.touched">
+                    The Name Characters Must Be Less Than 20
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="password">Description</label>
+                <textarea class="form-control" formControlName="description" rows="3"></textarea>
+                <div class="alert alert-danger mt-2" *ngIf="d_form.get('description')?.hasError('required') && d_form.get('description')?.touched">
+                    The Description Is Required
+                </div>
+                <div class="alert alert-danger mt-2" *ngIf="d_form.get('description')?.hasError('minlength') && d_form.get('description')?.touched">
+                    The Description Characters Must Be More Than 10
+                </div>
+            </div>
+            <button type="submit" class="btn btn-outline-primary" [disabled]="d_form.invalid">
+                Create
+            </button>
+
+            <div *ngIf="error" class="alert alert-danger mt-2" role="alert">
+                Error At Updating The Inventory
+            </div>
+        </form>
+        <div *ngIf="!inventory" class="alert alert-danger mt-2">
+            The Inventory Not Exists
+        </div>
+    </div>
+</div>

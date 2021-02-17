@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { InventoryService } from 'src/app/services/inventory.service';
 import { InventoriesComponent } from '../inventories/inventories.component';
 
@@ -15,7 +16,8 @@ export class CreateInventoryComponent implements OnInit {
 
   constructor(
     private _fb: FormBuilder,
-    private _service: InventoryService
+    private _service: InventoryService,
+    private router: Router
   ) {
     this.c_form = _fb.group({
       "name": ["",Validators.compose([Validators.required,Validators.minLength(5),Validators.maxLength(20)])],
@@ -30,7 +32,7 @@ export class CreateInventoryComponent implements OnInit {
   submit(data: JSON) {
     this._service.create(data).subscribe(res => {
       if (res) {
-        location.pathname = "/inventories"
+        this.router.navigate(['/inventories'])
       } else {
         this.error = true;
       }

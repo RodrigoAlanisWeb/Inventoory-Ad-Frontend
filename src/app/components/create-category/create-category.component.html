@@ -3,7 +3,7 @@
         <form class="mt-5 col-xl-9 col-xxl-7 m-auto" [formGroup]="c_form" (submit)="submit(c_form.value)">
             <div class="mb-3">
                 <label for="email">Name</label>
-                <input formControlName="name" class="form-control mt-1" type="text" name="email" placeholder="Enter The Name Of Your Inventory">
+                <input formControlName="name" class="form-control mt-1" type="text" name="email" placeholder="Enter The Name Of Your Category">
                 <div class="alert alert-danger mt-2" *ngIf="c_form.get('name')?.hasError('required') && c_form.get('name')?.touched">
                     The Name Is Required
                 </div>
@@ -14,7 +14,6 @@
                     The Name Characters Must Be Less Than 20
                 </div>
             </div>
-
             <button type="submit" class="btn btn-outline-primary" [disabled]="c_form.invalid">
                 Create
             </button>

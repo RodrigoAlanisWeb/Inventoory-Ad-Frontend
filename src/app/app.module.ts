@@ -12,6 +12,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthService } from './services/auth.service';
 import { InventoriesComponent } from './components/inventories/inventories.component';
 import { CreateInventoryComponent } from './components/create-inventory/create-inventory.component';
+import { EditInventoryComponent } from './components/edit-inventory/edit-inventory.component';
+import { ViewInventoryComponent } from './components/view-inventory/view-inventory.component';
+import { CreateCategoryComponent } from './components/create-category/create-category.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { CreateInventoryComponent } from './components/create-inventory/create-i
     LoginComponent,
     RegisterComponent,
     InventoriesComponent,
-    CreateInventoryComponent
+    CreateInventoryComponent,
+    EditInventoryComponent,
+    ViewInventoryComponent,
+    CreateCategoryComponent
   ],
   imports: [
     BrowserModule,

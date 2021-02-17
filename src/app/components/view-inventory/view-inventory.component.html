@@ -1,0 +1,19 @@
+<div class="container">
+    <div *ngIf="!categories" class="alert alert-danger mt-2">
+        You Dont Have Categories <a routerLink="../../../categories/create/{{ id }}" class="text-reset">Create One!</a>  
+    </div>
+    <div *ngIf="categories" class="row mt-5">
+        <nav class="nav nav-pills flex-column flex-sm-row border p-2 mt-1" *ngFor="let item of categories">
+            <a class="w-25 text-sm-center nav-link" href="#">{{ item.name }}</a>
+
+            <div class="flex-sm-fill btn-group" role="group" aria-label="Basic example">
+                <button (click)="delete(item.id)" type="button" class="btn btn-outline-danger">Delete</button>
+                <button type="button" class="btn btn-outline-primary">Enter</button>
+                <button type="button" class="btn btn-outline-success">Edit</button>
+            </div>
+        </nav>
+        <a routerLink="../../../categories/create/{{ id }}" class="btn btn-primary col-sm-2 mt-3">
+             + Add
+        </a>
+    </div>
+</div>

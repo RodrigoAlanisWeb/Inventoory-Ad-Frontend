@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _auth: AuthService,
-    private parent: AppComponent
+    private parent: AppComponent,
+    private router: Router
   ) {
     this.reg_form = this._fb.group({
       'name': ['', Validators.compose([Validators.maxLength(40),Validators.minLength(5),Validators.required])],
@@ -38,8 +40,8 @@ export class RegisterComponent implements OnInit {
     this._auth.register(value).subscribe(res => {
       if (res.res) {
         localStorage.setItem('token', res.token.accessToken);
-        location.pathname = "/"
         this.parent.verify_user(); 
+        this.router.navigate(['/'])
       } else {
         this.error = true;
       }

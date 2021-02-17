@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _auth: AuthService,
-    private parent: AppComponent
+    private parent: AppComponent,
+    private router: Router
   ) { 
     this.log_form = _fb.group({
       'email': ['',Validators.compose([Validators.required,Validators.email])],
@@ -37,8 +38,8 @@ export class LoginComponent implements OnInit {
     this._auth.login(data).subscribe(res => {
       if (res.res) {
         localStorage.setItem('token', res.token.accessToken);
-        location.pathname = "/"
         this.parent.verify_user(); 
+        this.router.navigate(['/'])
       } else {
         this.error = true;
       }
