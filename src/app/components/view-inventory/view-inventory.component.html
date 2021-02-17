@@ -8,8 +8,7 @@
 
             <div class="flex-sm-fill btn-group" role="group" aria-label="Basic example">
                 <button (click)="delete(item.id)" type="button" class="btn btn-outline-danger">Delete</button>
-                <button type="button" class="btn btn-outline-primary">Enter</button>
-                <button type="button" class="btn btn-outline-success">Edit</button>
+                <button routerLink="../../../categories/view/{{ item.id }}" type="button" class="btn btn-outline-primary">Enter</button>
             </div>
         </nav>
         <a routerLink="../../../categories/create/{{ id }}" class="btn btn-primary col-sm-2 mt-3">

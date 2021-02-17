@@ -19,6 +19,14 @@ export class CategoryService {
     });
   }
 
+  get(id: string): Observable<any> {
+    return this._http.get(`http://127.0.0.1:8000/api/category/getOne/${id}`,{
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+  }
+
   create(data: JSON, id: string): Observable<any> {
     return this._http.post(`http://127.0.0.1:8000/api/category/create/${id}`,data,{
       headers: {
@@ -29,6 +37,14 @@ export class CategoryService {
 
   delete(id: number): Observable<any> {
     return this._http.delete(`http://127.0.0.1:8000/api/category/delete/${id}`,{
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+  }
+
+  edit(id: number,data: JSON): Observable<any> {
+    return this._http.put(`http://127.0.0.1:8000/api/category/edit/${id}`,data,{
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }

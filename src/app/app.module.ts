@@ -15,6 +15,8 @@ import { CreateInventoryComponent } from './components/create-inventory/create-i
 import { EditInventoryComponent } from './components/edit-inventory/edit-inventory.component';
 import { ViewInventoryComponent } from './components/view-inventory/view-inventory.component';
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
+import { ViewCategoryComponent } from './components/view-category/view-category.component';
+import { CreateProductComponent } from './components/create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { CreateCategoryComponent } from './components/create-category/create-cat
     CreateInventoryComponent,
     EditInventoryComponent,
     ViewInventoryComponent,
-    CreateCategoryComponent
+    CreateCategoryComponent,
+    ViewCategoryComponent,
+    CreateProductComponent,
   ],
   imports: [
     BrowserModule,

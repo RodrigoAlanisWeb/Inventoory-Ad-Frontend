@@ -32,8 +32,11 @@ export class InventoriesComponent implements OnInit {
   }
 
   delete(id: number) {
-    this._service.delete(id).subscribe(res => console.log(res));
-    this.init();
+    let verify = confirm("Are You Sure?");
+    if (verify) {
+      this._service.delete(id).subscribe(res => console.log(res));
+      this.init();
+    }
   }
 
 }

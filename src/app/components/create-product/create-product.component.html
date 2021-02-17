@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
-        <form class="mt-5 col-xl-9 col-xxl-7 m-auto" [formGroup]="c_form" (submit)="submit(c_form.value)">
+        <form class="mt-5 col-xl-9 col-xxl-7 m-auto" (submit)="submit(c_form.value)" [formGroup]="c_form">
             <div class="mb-3">
-                <label for="email">Name</label>
-                <input formControlName="name" class="form-control mt-1" type="text" name="email" placeholder="Enter The Name Of Your Inventory">
+                <label>Name</label>
+                <input formControlName="name" class="form-control mt-1" type="text" placeholder="Enter The Name Of Your Product">
                 <div class="alert alert-danger mt-2" *ngIf="c_form.get('name')?.hasError('required') && c_form.get('name')?.touched">
                     The Name Is Required
                 </div>
@@ -16,12 +16,19 @@
             </div>
             <div class="mb-3">
                 <label>Description</label>
-                <input formControlName="description" class="form-control mt-1" type="text" placeholder="Enter The Description Of Your Inventory">
+                <input formControlName="description" class="form-control mt-1" type="text" placeholder="Enter The Description Of Your Product">
                 <div class="alert alert-danger mt-2" *ngIf="c_form.get('description')?.hasError('required') && c_form.get('description')?.touched">
                     The Description Is Required
                 </div>
-                <div class="alert alert-danger mt-2" *ngIf="c_form.get('description')?.hasError('required') && c_form.get('description')?.touched">
-                    The Description Must Be Longer Than 10 Characters
+                <div class="alert alert-danger mt-2" *ngIf="c_form.get('description')?.hasError('minlength') && c_form.get('description')?.touched">
+                    The Description Characters Must Be More Than 10
+                </div>
+            </div>
+            <div class="mb-3">
+                <label>Count</label>
+                <input formControlName="count" class="form-control mt-1" type="number" name="email" placeholder="Enter The Name Of Your Product">
+                <div class="alert alert-danger mt-2" *ngIf="c_form.get('count')?.hasError('required') && c_form.get('count')?.touched">
+                    The Count Is Required
                 </div>
             </div>
 
@@ -30,7 +37,7 @@
             </button>
 
             <div *ngIf="error" class="alert alert-danger mt-2" role="alert">
-                Error At Creating The Category
+                Error At Creating The Product
             </div>
         </form>
     </div>
